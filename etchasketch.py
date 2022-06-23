@@ -1,28 +1,39 @@
-from turtle import Turtle, Screen
+from turtle import Turtle
 from random import choice
 
-tim = Turtle()
-screen = Screen()
-
-screen.colormode(255)
-screen.title("Hirst Painting Simulator")
-screen.setup(1000, 1000)
-screen.bgcolor("#333333")
-tim.shapesize(2)
-tim.pensize(5)
-tim.fillcolor("dark slate gray")
-
-colors = ["dark slate gray", "dark slate blue", "cadet blue", "sea green", "dark khaki", "tomato4", "SlateBlue2",
+COLORS = ["dark slate gray", "dark slate blue", "cadet blue", "sea green", "dark khaki", "tomato4", "SlateBlue2",
           "RoyalBlue4"]
+tim = None
+
+
+def start(screen):
+    global tim
+    tim = Turtle()
+
+    screen.colormode(255)
+    screen.title("Etch A Sketch")
+
+    tim.shapesize(2)
+    tim.pensize(5)
+    tim.fillcolor("dark slate gray")
+
+    screen.listen()
+    screen.onkey(fun=moveForwards, key="w")
+    screen.onkey(fun=moveBack, key="s")
+    screen.onkeypress(fun=tiltLeft, key="a")
+    screen.onkeypress(fun=tiltRight, key="d")
+    screen.onkey(key="c", fun=clearScreen)
+
+    screen.exitonclick()
 
 
 def moveForwards():
-    tim.pencolor(choice(colors))
+    tim.pencolor(choice(COLORS))
     tim.forward(30)
 
 
 def moveBack():
-    tim.pencolor(choice(colors))
+    tim.pencolor(choice(COLORS))
     tim.back(30)
 
 
@@ -44,12 +55,3 @@ def clearScreen():
     tim.home()
     tim.pendown()
     tim.showturtle()
-
-
-screen.listen()
-screen.onkey(fun=moveForwards, key="w")
-screen.onkey(fun=moveBack, key="s")
-screen.onkeypress(fun=tiltLeft, key="a")
-screen.onkeypress(fun=tiltRight, key="d")
-screen.onkey(key="c", fun=clearScreen)
-screen.exitonclick()
