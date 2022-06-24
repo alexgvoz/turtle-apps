@@ -5,6 +5,7 @@ from random import randrange
 COLORS = ["red", "orange", "yellow", "green", "purple", "blue"]
 turtles = []
 race_is_on = False
+tim = None
 
 
 def spawnTurtles():
@@ -16,7 +17,9 @@ def spawnTurtles():
 
 
 def drawFinish():
+    global tim
     tim = Turtle()
+
     tim.hideturtle()
     tim.penup()
     tim.speed(0)
@@ -32,6 +35,14 @@ def drawFinish():
             tim.pencolor("gray17")
 
         tim.forward(10)
+
+
+def end(text):
+    tim.penup()
+    tim.speed("fastest")
+    tim.home()
+    tim.pencolor("gray66")
+    tim.write(text, False, "center", ("Arial", 16, "normal"))
 
 
 def start(screen):
@@ -64,9 +75,9 @@ def start(screen):
                 race_is_on = False
 
                 if user_bet == t.color()[0]:
-                    print(f"You've won! The {t.color()[0]} turtle finished first!")
+                    end(f"You've won! The {t.color()[0]} turtle finished first!")
                 else:
-                    print(f"You've lost! The {t.color()[0]} turtle finished first!")
+                    end(f"You've lost! The {t.color()[0]} turtle finished first!")
 
                 break
 

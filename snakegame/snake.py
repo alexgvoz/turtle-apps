@@ -1,8 +1,7 @@
-import time
 from turtle import Turtle
 
 MOVE_DIST = 10
-
+COLOR = "gray66"
 
 class Snake:
     segments = []
@@ -15,27 +14,27 @@ class Snake:
         self.screen.onkeypress(self.left, "Left")
         self.screen.onkeypress(self.right, "Right")
 
-        self.createSnake()
-        self.head = self.segments[0]
-        self.moveSnake()
-
-    def createSnake(self):
         for i in range(3):
             self.segments.append(Turtle("square"))
             self.segments[i].penup()
-            self.segments[i].color("light gray")
+            self.segments[i].color(COLOR)
             self.segments[i].setx(0 - (20 * i))
 
-    def moveSnake(self):
-        while True:
-            self.screen.update()
-            time.sleep(.05)
+        self.head = self.segments[0]
+        self.move()
 
-            for s in range(len(self.segments) - 1, -1, -1):
-                if s == 0:
-                    self.head.forward(MOVE_DIST)
-                else:
-                    self.segments[s].setposition(self.segments[s - 1].position())
+    def move(self):
+        for s in range(len(self.segments) - 1, -1, -1):
+            if s == 0:
+                self.head.forward(MOVE_DIST)
+            else:
+                self.segments[s].setposition(self.segments[s - 1].position())
+
+    def extend(self):
+        self.segments.append(Turtle("square"))
+        self.segments[-1].penup()
+        self.segments[-1].color(COLOR)
+        self.segments[-1].setposition(self.segments[-2].position())
 
     def up(self):
         if self.head.heading() != 270:

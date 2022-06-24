@@ -1,7 +1,6 @@
 from turtle import Screen
 
-import turtlerace
-import etchasketch
+from simpleapps import etchasketch, turtlerace
 import snakegame.snakegame as snake
 
 if __name__ == "__main__":
