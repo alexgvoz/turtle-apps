@@ -7,12 +7,11 @@ class Snake:
     segments = []
 
     def __init__(self, screen):
-        self.screen = screen
-        self.screen.listen()
-        self.screen.onkeypress(self.up, "Up")
-        self.screen.onkeypress(self.down, "Down")
-        self.screen.onkeypress(self.left, "Left")
-        self.screen.onkeypress(self.right, "Right")
+        screen.listen()
+        screen.onkeypress(self.up, "Up")
+        screen.onkeypress(self.down, "Down")
+        screen.onkeypress(self.left, "Left")
+        screen.onkeypress(self.right, "Right")
 
         for i in range(3):
             self.segments.append(Turtle("square"))

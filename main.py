@@ -1,7 +1,8 @@
 from turtle import Screen
 
 from simpleapps import etchasketch, turtlerace
-import snakegame.snakegame as snake
+from snakegame import snakemain
+from ponggame.pongmain import PongGame
 
 if __name__ == "__main__":
     screen = Screen()
@@ -21,7 +22,10 @@ if __name__ == "__main__":
                     etchasketch.start(screen)
                     break
                 case "snake":
-                    snake.start(screen)
+                    snakemain.start(screen)
+                    break
+                case "pong":
+                    PongGame().start(screen)
                     break
                 case _:
                     print("Please select an existing game.")

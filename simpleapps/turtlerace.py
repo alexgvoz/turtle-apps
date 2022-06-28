@@ -82,3 +82,5 @@ def start(screen):
                 break
 
     screen.exitonclick()
+
+# TODO: Add ability to input custom turtle names
