@@ -13,10 +13,13 @@ class Player(Turtle):
         self.setheading(90)
         self.shape("turtle")
         self.color("gray66")
-        self.goto(STARTING_POSITION)
+        self.goToStart()
 
         screen.listen()
         screen.onkeypress(self.move, "Up")
 
     def move(self):
         self.forward(MOVE_DISTANCE)
+
+    def goToStart(self):
+        self.goto(STARTING_POSITION)

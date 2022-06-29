@@ -15,11 +15,21 @@ class TurtleCrossing:
         scoreboard = Scoreboard()
         player = Player(screen)
         cars = CarManager()
-        cars.spawnTurtle()
 
         while game_is_on:
-            time.sleep(0.1)
+            time.sleep(0.05)
+            if player.ycor() > 280:
+                player.goToStart()
+                scoreboard.update()
+                cars.speedUp()
 
+            cars.spawnTurtle()
+            cars.moveCars()
+            cars.cleanUp()
             screen.update()
+            for car in cars.activecars:
+                if car.distance(player) < 20:
+                    scoreboard.gameOver()
+                    game_is_on = False
 
         screen.exitonclick()
