@@ -8,18 +8,17 @@ from ponggame.scoreboard import Scoreboard
 
 class PongGame:
 
-    @classmethod
-    def start(cls, screen):
+    def start(self, screen):
         screen.setup(800, 600)
         screen.title("Pong")
         screen.tracer(0)
 
-        cls.drawMiddle()
+        self.drawMiddle()
 
         game_is_on = True
 
-        r_paddle = Paddle(350)
-        l_paddle = Paddle(-350)
+        r_paddle = Paddle(350, "tomato4")
+        l_paddle = Paddle(-350,"RoyalBlue4")
         ball = Ball()
         scoreboard = Scoreboard()
 
@@ -53,8 +52,7 @@ class PongGame:
 
         screen.exitonclick()
 
-    @classmethod
-    def drawMiddle(cls):
+    def drawMiddle(self):
         tim = Turtle()
         tim.hideturtle()
         tim.penup()

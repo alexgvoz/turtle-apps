@@ -3,6 +3,7 @@ from turtle import Screen
 from simpleapps import etchasketch, turtlerace
 from snakegame import snakemain
 from ponggame.pongmain import PongGame
+from turtlecrossing.crossingmain import TurtleCrossing
 
 if __name__ == "__main__":
     screen = Screen()
@@ -25,8 +26,12 @@ if __name__ == "__main__":
                     snakemain.start(screen)
                     break
                 case "pong":
-                    PongGame().start(screen)
+                    pong = PongGame()
+                    pong.start(screen)
                     break
+                case "crossing":
+                    tcrossing = TurtleCrossing()
+                    tcrossing.start(screen)
                 case _:
                     print("Please select an existing game.")
         else:

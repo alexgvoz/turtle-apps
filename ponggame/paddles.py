@@ -3,12 +3,12 @@ from turtle import Turtle
 
 class Paddle(Turtle):
 
-    def __init__(self, startX):
+    def __init__(self, startX, color):
         super().__init__()
         self.shape("square")
         self.penup()
         self.setheading(90)
-        self.color("gray66")
+        self.color(color)
         self.shapesize(1, 5)
         self.goto(startX, 0)
 

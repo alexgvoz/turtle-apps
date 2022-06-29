@@ -10,7 +10,7 @@ class Ball(Turtle):
         super().__init__()
         self.shape("circle")
         self.penup()
-        self.color("gray66")
+        self.color("gray76")
         self.setheading(45)
         self.move_speed = 0.1
         self.y_move = choice([-BALL_SPEED, BALL_SPEED])
