@@ -3,6 +3,7 @@ from turtle import Turtle
 MOVE_DIST = 10
 COLOR = "gray66"
 
+
 class Snake:
     segments = []
 
@@ -13,6 +14,9 @@ class Snake:
         screen.onkeypress(self.left, "Left")
         screen.onkeypress(self.right, "Right")
 
+        self.createSnake()
+
+    def createSnake(self):
         for i in range(3):
             self.segments.append(Turtle("square"))
             self.segments[i].penup()
@@ -34,6 +38,12 @@ class Snake:
         self.segments[-1].penup()
         self.segments[-1].color(COLOR)
         self.segments[-1].setposition(self.segments[-2].position())
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.createSnake()
 
     def up(self):
         if self.head.heading() != 270:
